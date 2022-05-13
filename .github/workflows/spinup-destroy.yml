@@ -6,9 +6,9 @@ on:
     
 env:
   AZURE_RESOURCE_GROUP: cd-with-actions
-  AZURE_APP_PLAN: Github-Actions
+  AZURE_APP_PLAN: actions-ttt-deployment
   AZURE_LOCATION: '"North Europe"'
-  AZURE_WEBAPP_NAME: Github-Actions
+  AZURE_WEBAPP_NAME: justen-lyit-ttt-app
   
 jobs:
   setup-up-azure-resources:
@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Azure login
-        uses: azure/actions/login@v1
+        uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           
