@@ -1,0 +1,31 @@
+name: Spinup Azure Environment
+
+on:
+  workflow_dispatch:
+    
+env:
+  AZURE_RESOURCE_GROUP: cd-with-actions
+  AZURE_APP_PLAN: actions-ttt-deployment
+  AZURE_LOCATION: '"northeurope"'
+  AZURE_WEBAPP_NAME: justen-lyit-ttt-app
+  
+jobs:
+
+  destroy-azure-resources:
+    runs-on: ubuntu-latest
+    
+    if: contains(github.event.pull_request.labels.*.name, 'destroy environment')
+    
+    steps:
+      - name: Checkout respository
+        uses: actions/checkout@v2
+        
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Destroy Azure environment
+        if: success()
+        run: |
+          az group delete --name ${{env.AZURE_RESOURCE_GROUP}} --subscription ${{secrets.AZURE_SUBSCRIPTION_ID}} --yes
