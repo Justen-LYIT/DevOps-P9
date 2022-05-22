@@ -7,7 +7,7 @@ on:
 env:
   AZURE_RESOURCE_GROUP: cd-with-actions
   AZURE_APP_PLAN: actions-ttt-deployment
-  AZURE_LOCATION: '"Uk West"'
+  AZURE_LOCATION: '"northeurope"'
   AZURE_WEBAPP_NAME: justen-lyit-ttt-app
   
 jobs:
