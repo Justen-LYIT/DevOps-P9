@@ -1,4 +1,4 @@
-name: Spinup Azure Environment
+name: Manually Spinup Azure Environment
 
 on:
   workflow_dispatch:
